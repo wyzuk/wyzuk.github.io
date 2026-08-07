@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Wyzuk — Arch Linux & Hyprland OS Architect | amzad_studio</title>
+  <meta name="description" content="Portfolio of Wyzuk: Creator of yumemiro-os, Arch Linux desktop developer, Discord bot automation architect, and founder of amzad_studio design.">
+  <meta name="keywords" content="Wyzuk, yumemiro-os, Hyprland, Arch Linux, Wayland, amzad_studio, Python, Discord Bot, Glassmorphism, Linux Dotfiles">
+  <meta name="author" content="Wyzuk">
+
+  <!-- OpenGraph Meta Tags -->
+  <meta property="og:title" content="Wyzuk — Arch Linux & Hyprland OS Architect">
+  <meta property="og:description" content="Hyprland glassmorphism portfolio featuring yumemiro-os distribution, Discord automation, and amzad_studio UI design.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://github.com/wyzuk">
+  <meta property="og:image" content="https://github.com/wyzuk.png">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body data-theme="default">
+
+  <!-- Atmospheric Background Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- ==========================================================================
+       WAYBAR TOP BAR (HYPRLAND HEADER)
+       ========================================================================== -->
+  <header id="waybar" class="waybar">
+    <div class="waybar-left">
+      <a href="#hero" class="distro-logo" id="waybar-logo">
+        <svg viewBox="0 0 300 300">
+          <path d="M150,15 L280,265 L200,265 L170,205 L185,175 L150,90 L115,175 L130,205 L100,265 L20,265 Z" />
+        </svg>
+        <span>wyzuk@arch</span>
+      </a>
+      <div class="workspaces">
+        <button class="ws-btn active" data-target="hero" id="ws-1">1</button>
+        <button class="ws-btn" data-target="yumemiro" id="ws-2">2</button>
+        <button class="ws-btn" data-target="tech-stack" id="ws-3">3</button>
+        <button class="ws-btn" data-target="showcase" id="ws-4">4</button>
+        <button class="ws-btn" data-target="footer" id="ws-5">5</button>
+      </div>
+    </div>
+
+    <div class="waybar-center">
+      <i data-lucide="terminal" class="active-win-icon"></i>
+      <span id="active-win-title">hyprland.conf — yumemiro-os (Wayland)</span>
+    </div>
+
+    <div class="waybar-right">
+      <div class="status-chip" title="CPU Usage">
+        <i data-lucide="cpu"></i>
+        <span id="waybar-cpu">2.4%</span>
+      </div>
+      <div class="status-chip" title="Memory Usage">
+        <i data-lucide="hard-drive"></i>
+        <span id="waybar-ram">0.42 GiB</span>
+      </div>
+      <div class="status-chip" title="System Time">
+        <i data-lucide="clock"></i>
+        <span id="waybar-time">13:37:00</span>
+      </div>
+      <button class="shader-toggle-btn" id="shader-btn" title="Toggle Shader / Theme Preset">
+        <i data-lucide="palette"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO SECTION
+       ========================================================================== -->
+  <section id="hero" class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        
+        <!-- Left: Profile & Intro -->
+        <div class="hero-profile">
+          <div class="pfp-wrapper">
+            <img id="github-avatar" src="https://github.com/wyzuk.png" alt="Wyzuk Profile Picture" class="pfp-img">
+            <div class="pfp-badge">
+              <span class="pulse-dot"></span>
+              <span>ONLINE</span>
+            </div>
+          </div>
+
+          <div class="hero-title-group">
+            <div class="hero-handle">
+              <i data-lucide="github"></i>
+              <span>github.com/wyzuk</span>
+            </div>
+            <h1 class="hero-name">Wyzuk</h1>
+          </div>
+
+          <div class="typing-box">
+            <span class="typing-prefix">&gt; </span>
+            <span id="typing-text" class="typing-text">Arch Linux Kernel &amp; Hyprland OS Architect</span>
+            <span class="typing-cursor"></span>
+          </div>
+
+          <p class="hero-bio">
+            Crafting ultra-performant Wayland desktop environments, custom Arch Linux distribution configurations, and high-reliability Python Discord bot infrastructure.
+          </p>
+
+          <div class="studio-pill">
+            <i data-lucide="sparkles"></i>
+            <span>Founder &amp; Designer @ amzad_studio</span>
+          </div>
+
+          <div class="hero-cta-group">
+            <a href="https://github.com/wyzuk" target="_blank" rel="noopener" class="glass-btn glass-btn-primary" id="cta-github">
+              <i data-lucide="github"></i>
+              <span>GitHub Profile</span>
+            </a>
+            <a href="#yumemiro" class="glass-btn glass-btn-secondary" id="cta-yumemiro">
+              <i data-lucide="layout"></i>
+              <span>yumemiro-os</span>
+            </a>
+            <button class="glass-btn glass-btn-secondary" id="open-kbd-btn">
+              <i data-lucide="command"></i>
+              <span>Keybindings</span>
+            </button>
+          </div>
+
+          <div class="github-quick-stats">
+            <div class="stat-item">
+              <span class="stat-val" id="github-repos-count">14</span>
+              <span class="stat-lbl">Repositories</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-val" id="github-followers-count">48</span>
+              <span class="stat-lbl">Followers</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-val">240 FPS</span>
+              <span class="stat-lbl">Wayland Sync</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Hyprland Terminal -->
+        <div class="terminal-window">
+          <div class="window-bar">
+            <div class="window-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <span class="window-title">
+              <i data-lucide="terminal"></i> wyzuk@yumemiro-os:~ (kitty)
+            </span>
+            <span class="window-actions">HYPRLAND v0.42.0</span>
+          </div>
+
+          <div class="terminal-body" id="terminal-body">
+            <div class="term-line">
+              <span class="term-output">Welcome to Wyzuk Interactive Hyprland Shell.</span>
+            </div>
+            <div class="term-line">
+              <span class="term-output">Type <strong style="color: var(--accent-cyan);">help</strong> to list available commands or <strong style="color: var(--accent-violet);">neofetch</strong> for system specs.</span>
+            </div>
+            <div class="term-line">
+              <span class="term-prompt">wyzuk@yumemiro-os:~$</span>
+              <span class="term-cmd">neofetch</span>
+            </div>
+            <div class="term-line">
+              <div class="term-output neofetch-output">
+                <div class="arch-ascii">
+       /\
+      /  \
+     / /\ \
+    / /  \ \
+   / /    \ \
+  / /_/\_\ \ \
+ /__________\ \
+ \____________\
+                </div>
+                <div class="neofetch-info">
+                  <span><strong>OS:</strong> Arch Linux x86_64</span>
+                  <span><strong>Host:</strong> Wyzuk Desktop Custom</span>
+                  <span><strong>Kernel:</strong> 6.10.4-arch1-1</span>
+                  <span><strong>WM:</strong> Hyprland (Wayland)</span>
+                  <span><strong>Theme:</strong> yumemiro-os (Blue-Hour Glass)</span>
+                  <span><strong>Design Studio:</strong> amzad_studio</span>
+                  <span><strong>Core Skills:</strong> Arch, Python, UI/UX</span>
+                  <span><strong>Memory:</strong> 0.42 GiB / 16 GiB</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="window-bar" style="border-top: 1px solid var(--border-light); border-bottom: none;">
+            <div class="term-input-row" style="width: 100%;">
+              <span class="term-prompt">wyzuk@yumemiro-os:~$</span>
+              <input type="text" id="terminal-input" class="term-input" placeholder="Type command (e.g. help, skills, projects, clear)..." autocomplete="off">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FLAGSHIP PROJECT SPOTLIGHT (yumemiro-os)
+       ========================================================================== -->
+  <section id="yumemiro" class="section">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="section-tag">Flagship OS Distribution</span>
+        <h2 class="section-title">yumemiro-os</h2>
+        <p class="section-subtitle">
+          An aesthetic, ultra-performant Arch Linux desktop environment crafted with the Hyprland Wayland compositor.
+        </p>
+      </div>
+
+      <div class="flagship-card">
+        
+        <!-- Left Column: Philosophy & Details -->
+        <div class="flagship-content">
+          <div class="flagship-badge">
+            <i data-lucide="layers"></i>
+            <span>Hyprland Wayland Compositor</span>
+          </div>
+
+          <h3 class="flagship-title">
+            Cinematic Glassmorphism <span>&amp; Raw Speed</span>
+          </h3>
+
+          <p class="flagship-desc">
+            yumemiro-os fuses 1990s desktop clarity with modern Wayland UI standards. Built on Arch Linux, it delivers a custom blue-hour atmosphere with multi-pass blur shaders, dynamic linear gradient borders, and zero-latency window physics.
+          </p>
+
+          <div class="pillars-grid">
+            <div class="pillar-item">
+              <i data-lucide="droplet" class="pillar-icon"></i>
+              <h4 class="pillar-title">Frosted Glass UI</h4>
+              <p class="pillar-text">Heavy backdrop blur filters and translucent panels crafted by amzad_studio.</p>
+            </div>
+            <div class="pillar-item">
+              <i data-lucide="zap" class="pillar-icon"></i>
+              <h4 class="pillar-title">Hyprland Physics</h4>
+              <p class="pillar-text">Snappy bezier easings and active glowing gradient focus rings for 240Hz monitors.</p>
+            </div>
+            <div class="pillar-item">
+              <i data-lucide="feather" class="pillar-icon"></i>
+              <h4 class="pillar-title">Minimal Memory</h4>
+              <p class="pillar-text">Idle RAM usage below 400 MB with custom C/Rust Wayland utility daemons.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: OS Screenshot Preview & Interactive Tabs -->
+        <div class="flagship-preview-container">
+          <div class="flagship-preview-frame">
+            <img src="assets/yumemiro_os_screenshot.jpg" alt="yumemiro-os Hyprland Screenshot" class="flagship-img">
+            <div class="preview-overlay-controls">
+              <div class="preview-specs">
+                <span><i data-lucide="monitor"></i> 2560x1440</span>
+                <span><i data-lucide="activity"></i> 240Hz</span>
+              </div>
+              <button class="keybindings-trigger-btn" onclick="document.getElementById('keybindings-modal').classList.add('active')">
+                <i data-lucide="sliders"></i> Keybindings
+              </button>
+            </div>
+          </div>
+
+          <!-- Dotfiles Code Viewer Tabs -->
+          <div class="dotfiles-tabs-container">
+            <div class="tab-header">
+              <button class="tab-btn active" data-tab="tab-hypr">hyprland.conf</button>
+              <button class="tab-btn" data-tab="tab-waybar">waybar.json</button>
+              <button class="tab-btn" data-tab="tab-kitty">kitty.conf</button>
+            </div>
+            
+            <div id="tab-hypr" class="tab-content tab-content-block">
+<span class="code-comment"># yumemiro-os Hyprland Configuration</span>
+<span class="code-keyword">monitor</span> = ,2560x1440@240,auto,1
+<span class="code-keyword">general</span> {
+    <span class="code-property">gaps_in</span> = <span class="code-num">6</span>
+    <span class="code-property">gaps_out</span> = <span class="code-num">14</span>
+    <span class="code-property">border_size</span> = <span class="code-num">2</span>
+    <span class="code-property">col.active_border</span> = <span class="code-string">rgba(38bdf8ff) rgba(818cf8ff) 45deg</span>
+    <span class="code-property">layout</span> = <span class="code-string">dwindle</span>
+}
+<span class="code-keyword">decoration</span> {
+    <span class="code-property">rounding</span> = <span class="code-num">12</span>
+    <span class="code-property">blur</span> {
+        <span class="code-property">enabled</span> = <span class="code-string">true</span>
+        <span class="code-property">size</span> = <span class="code-num">10</span>
+        <span class="code-property">passes</span> = <span class="code-num">3</span>
+    }
+}
+            </div>
+
+            <div id="tab-waybar" class="tab-content tab-content-block" style="display: none;">
+<span class="code-comment">// Waybar Blue-Hour Layout</span>
+{
+  <span class="code-property">"layer"</span>: <span class="code-string">"top"</span>,
+  <span class="code-property">"position"</span>: <span class="code-string">"top"</span>,
+  <span class="code-property">"modules-left"</span>: [<span class="code-string">"hyprland/workspaces"</span>, <span class="code-string">"hyprland/window"</span>],
+  <span class="code-property">"modules-right"</span>: [<span class="code-string">"cpu"</span>, <span class="code-string">"memory"</span>, <span class="code-string">"clock"</span>],
+  <span class="code-property">"clock"</span>: { <span class="code-property">"format"</span>: <span class="code-string">"{:%H:%M:%S}"</span> }
+}
+            </div>
+
+            <div id="tab-kitty" class="tab-content tab-content-block" style="display: none;">
+<span class="code-comment"># Kitty Terminal Translucent Blue Theme</span>
+font_family      Fira Code
+font_size        11.0
+background_opacity 0.85
+background       #070b14
+foreground       #f8fafc
+selection_background #38bdf8
+active_border_color  #818cf8
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       TECH STACK GRID
+       ========================================================================== -->
+  <section id="tech-stack" class="section">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="section-tag">Core Technical Competencies</span>
+        <h2 class="section-title">Architecture &amp; Skill Matrix</h2>
+        <p class="section-subtitle">
+          Engineered across low-level Linux system customization, Python bot development, and visual UI design.
+        </p>
+      </div>
+
+      <div class="tech-grid">
+        
+        <!-- Card 1: System Customization -->
+        <div class="tech-card">
+          <div class="tech-card-header">
+            <div class="tech-icon-box">
+              <i data-lucide="terminal"></i>
+            </div>
+            <h3 class="tech-category-title">System Customization</h3>
+          </div>
+
+          <div class="tech-tags">
+            <span class="tech-tag"><i data-lucide="cpu"></i> Arch Linux</span>
+            <span class="tech-tag"><i data-lucide="layout-grid"></i> Hyprland</span>
+            <span class="tech-tag"><i data-lucide="monitor"></i> Wayland Protocols</span>
+            <span class="tech-tag"><i data-lucide="sliders"></i> Rofi / WOFI</span>
+            <span class="tech-tag"><i data-lucide="bar-chart-2"></i> Eww &amp; Waybar</span>
+            <span class="tech-tag"><i data-lucide="code"></i> Shell / Bash</span>
+          </div>
+
+          <div class="tech-skills-list">
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span class="skill-name">Arch Linux Custom Distros</span>
+                <span class="skill-pct">98%</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width: 98%;"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span class="skill-name">Hyprland Compositor Config</span>
+                <span class="skill-pct">95%</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width: 95%;"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span class="skill-name">Linux Kernel &amp; Dotfiles Tuning</span>
+                <span class="skill-pct">90%</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width: 90%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Backend & Python Automation -->
+        <div class="tech-card">
+          <div class="tech-card-header">
+            <div class="tech-icon-box">
+              <i data-lucide="code-2"></i>
+            </div>
+            <h3 class="tech-category-title">Backend &amp; Automation</h3>
+          </div>
+
+          <div class="tech-tags">
+            <span class="tech-tag"><i data-lucide="terminal"></i> Python 3.12+</span>
+            <span class="tech-tag"><i data-lucide="bot"></i> Discord API / Discord.py</span>
+            <span class="tech-tag"><i data-lucide="refresh-cw"></i> AsyncIO Architecture</span>
+            <span class="tech-tag"><i data-lucide="database"></i> SQLite / PostgreSQL</span>
+            <span class="tech-tag"><i data-lucide="globe"></i> RESTful APIs</span>
+            <span class="tech-tag"><i data-lucide="shield"></i> Server Defense Bots</span>
+          </div>
+
+          <div class="tech-skills-list">
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span class="skill-name">Discord Server Automation</span>
+                <span class="skill-pct">96%</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width: 96%;"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span class="skill-name">Async Python &amp; API Integration</span>
+                <span class="skill-pct">92%</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width: 92%;"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span class="skill-name">Database &amp; Bot State Management</span>
+                <span class="skill-pct">88%</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width: 88%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Graphic Design & UI/UX -->
+        <div class="tech-card">
+          <div class="tech-card-header">
+            <div class="tech-icon-box">
+              <i data-lucide="palette"></i>
+            </div>
+            <h3 class="tech-category-title">Graphic Design (amzad_studio)</h3>
+          </div>
+
+          <div class="tech-tags">
+            <span class="tech-tag"><i data-lucide="sparkles"></i> amzad_studio</span>
+            <span class="tech-tag"><i data-lucide="eye"></i> Glassmorphism UI</span>
+            <span class="tech-tag"><i data-lucide="pen-tool"></i> Vector Graphics</span>
+            <span class="tech-tag"><i data-lucide="figma"></i> Desktop Themes</span>
+            <span class="tech-tag"><i data-lucide="image"></i> Icon Systems</span>
+            <span class="tech-tag"><i data-lucide="sun"></i> Blue-Hour Lighting</span>
+          </div>
+
+          <div class="tech-skills-list">
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span class="skill-name">Desktop &amp; OS UI Architecture</span>
+                <span class="skill-pct">95%</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width: 95%;"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span class="skill-name">Vector Art &amp; Studio Branding</span>
+                <span class="skill-pct">94%</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width: 94%;"></div></div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span class="skill-name">Color Grading &amp; Lighting Systems</span>
+                <span class="skill-pct">91%</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill" style="width: 91%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       INTERACTIVE SHOWCASE (DISCORD LAB & amzad_studio)
+       ========================================================================== -->
+  <section id="showcase" class="section">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="section-tag">Interactive Showcases</span>
+        <h2 class="section-title">Discord Automation &amp; amzad_studio</h2>
+        <p class="section-subtitle">
+          Interactive previews of custom Discord bot architecture and design studio visual creations.
+        </p>
+      </div>
+
+      <div class="showcase-grid">
+        
+        <!-- Discord Bot Lab Panel -->
+        <div class="showcase-panel">
+          <div class="showcase-header">
+            <div class="showcase-title-box">
+              <i data-lucide="bot" class="showcase-icon"></i>
+              <h3 class="showcase-title">Discord Automation Lab</h3>
+            </div>
+            <div class="tech-tags">
+              <button class="tech-tag bot-cmd-pill active" data-cmd="music">/play lofi</button>
+              <button class="tech-tag bot-cmd-pill" data-cmd="auto">/defense</button>
+              <button class="tech-tag bot-cmd-pill" data-cmd="stats">/stats</button>
+            </div>
+          </div>
+
+          <div class="bot-sim-window">
+            <div class="discord-msg">
+              <div class="discord-avatar">W</div>
+              <div class="discord-content">
+                <div class="discord-author">
+                  <span>WyzukBot</span>
+                  <span class="bot-tag">BOT</span>
+                  <span style="font-size: 0.72rem; color: #94a3b8;">Today at 13:37</span>
+                </div>
+                <div class="discord-embed">
+                  <div class="discord-embed-title" id="bot-response-title">🎵 Playing: Lofi Chill (Blue Hour Mix)</div>
+                  <div id="bot-response-desc" style="color: #cbd5e1;">
+                    Requested by @wyzuk | Bitrate: 320kbps | Equalizer: Hypr-Bass Boosted | Duration: 3:45 / 42:00
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p style="font-size: 0.88rem; color: var(--text-secondary);">
+            Engineered with Discord.py &amp; AsyncIO. Handles high-concurrency voice audio streaming, automatic server raid defense, and custom slash-command moderation.
+          </p>
+        </div>
+
+        <!-- amzad_studio Showcase Panel -->
+        <div class="showcase-panel">
+          <div class="showcase-header">
+            <div class="showcase-title-box">
+              <i data-lucide="sparkles" class="showcase-icon" style="color: var(--accent-purple);"></i>
+              <h3 class="showcase-title">amzad_studio Design</h3>
+            </div>
+            <span class="studio-pill">UI/UX Graphic Studio</span>
+          </div>
+
+          <div class="studio-image-box">
+            <img src="assets/amzad_studio_showcase.jpg" alt="amzad_studio Graphic Design Showcase" class="studio-img">
+            <div class="studio-overlay">
+              <div class="studio-caption">
+                <strong>amzad_studio Visual Suite</strong> — Glassmorphism Theme Palettes &amp; Wayland Iconography
+              </div>
+            </div>
+          </div>
+
+          <p style="font-size: 0.88rem; color: var(--text-secondary);">
+            The creative branding studio behind yumemiro-os. Designing high-contrast blue-hour wallpaper sets, vector graphic iconography, and custom Hyprland color palettes.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       MODAL DIALOG (KEYBINDINGS CHEAT SHEET)
+       ========================================================================== -->
+  <div id="keybindings-modal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <i data-lucide="command" style="color: var(--accent-cyan);"></i>
+          <h3 class="modal-title">yumemiro-os Keybindings Cheat Sheet</h3>
+        </div>
+        <button class="modal-close-btn" id="close-kbd-btn">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="kbd-row">
+          <span class="kbd-desc">Open Terminal (Kitty)</span>
+          <span class="kbd-key">SUPER + RETURN</span>
+        </div>
+        <div class="kbd-row">
+          <span class="kbd-desc">Close Active Window</span>
+          <span class="kbd-key">SUPER + Q</span>
+        </div>
+        <div class="kbd-row">
+          <span class="kbd-desc">Rofi Application Launcher</span>
+          <span class="kbd-key">SUPER + SPACE</span>
+        </div>
+        <div class="kbd-row">
+          <span class="kbd-desc">File Manager (Thunar)</span>
+          <span class="kbd-key">SUPER + E</span>
+        </div>
+        <div class="kbd-row">
+          <span class="kbd-desc">Toggle Window Floating</span>
+          <span class="kbd-key">SUPER + SHIFT + F</span>
+        </div>
+        <div class="kbd-row">
+          <span class="kbd-desc">Clipboard Manager</span>
+          <span class="kbd-key">SUPER + V</span>
+        </div>
+        <div class="kbd-row">
+          <span class="kbd-desc">Switch Workspace (1 - 5)</span>
+          <span class="kbd-key">SUPER + [1..5]</span>
+        </div>
+        <div class="kbd-row">
+          <span class="kbd-desc">Move Window to Workspace</span>
+          <span class="kbd-key">SUPER + SHIFT + [1..5]</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#hero" class="footer-logo">Wyzuk // yumemiro-os</a>
+          <p class="footer-sub">
+            Arch Linux Developer &amp; Hyprland Desktop OS Architect.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <a href="https://github.com/wyzuk" target="_blank" rel="noopener" class="footer-link">
+            <i data-lucide="github"></i> GitHub Profile
+          </a>
+          <a href="https://github.com/wyzuk?tab=repositories" target="_blank" rel="noopener" class="footer-link">
+            <i data-lucide="folder"></i> Repositories
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Wyzuk. All rights reserved. Designed with <a href="#" class="studio-credit">amzad_studio</a>.
+        </div>
+        <div class="system-status-pill">
+          <span class="pulse-dot"></span>
+          <span>System Uptime: <strong id="uptime-counter" style="color: var(--accent-cyan);">42d 13h 37m 00s</strong></span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>

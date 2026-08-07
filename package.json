@@ -1,0 +1,26 @@
+{
+  "name": "wyzuk-portfolio",
+  "version": "1.0.0",
+  "description": "Hyprland & Glassmorphic Portfolio Website for Wyzuk - Creator of yumemiro-os & amzad_studio",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx vite",
+    "build": "npx vite build",
+    "preview": "npx vite preview",
+    "serve": "npx serve ."
+  },
+  "keywords": [
+    "hyprland",
+    "arch-linux",
+    "glassmorphism",
+    "portfolio",
+    "wyzuk",
+    "yumemiro-os",
+    "wayland"
+  ],
+  "author": "Wyzuk (amzad_studio)",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
