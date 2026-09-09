@@ -1,7 +1,5 @@
-/* ==========================================================================
    WYZUK PORTFOLIO - HYPRLAND & GLASSMORPHIC DESIGN SYSTEM
    Cinematic Blue-Hour Aesthetics | Wayland UI | amzad_studio
-   ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -146,9 +144,7 @@ body {
   z-index: 2;
 }
 
-/* ==========================================================================
    WAYBAR TOP HEADER (HYPRLAND BAR)
-   ========================================================================== */
 .waybar {
   position: fixed;
   top: 12px;
@@ -314,9 +310,7 @@ body {
   color: var(--accent-cyan);
 }
 
-/* ==========================================================================
    HERO SECTION
-   ========================================================================== */
 .hero-section {
   min-height: 100vh;
   padding-top: 100px;
@@ -566,9 +560,7 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* ==========================================================================
    HYPRLAND INTERACTIVE TERMINAL WINDOW (RIGHT SIDE HERO)
-   ========================================================================== */
 .terminal-window {
   background: var(--bg-terminal);
   backdrop-filter: var(--backdrop-blur);
@@ -710,9 +702,7 @@ body {
   width: 100%;
 }
 
-/* ==========================================================================
    SECTION COMMON STYLES
-   ========================================================================== */
 .section {
   padding: 6rem 0;
   position: relative;
@@ -753,9 +743,7 @@ body {
   font-size: 1.05rem;
 }
 
-/* ==========================================================================
    FLAGSHIP PROJECT SPOTLIGHT (yumemiro-os)
-   ========================================================================== */
 .flagship-card {
   background: var(--bg-card);
   backdrop-filter: var(--backdrop-blur);
@@ -979,9 +967,7 @@ body {
 .code-comment { color: #64748b; italic: true; }
 .code-num { color: #fbbf24; }
 
-/* ==========================================================================
    TECH STACK GRID
-   ========================================================================== */
 .tech-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1115,9 +1101,7 @@ body {
   transition: width 1s ease-out;
 }
 
-/* ==========================================================================
    INTERACTIVE SHOWCASE (DISCORD LAB & amzad_studio)
-   ========================================================================== */
 .showcase-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1272,9 +1256,7 @@ body {
   color: var(--text-primary);
 }
 
-/* ==========================================================================
    MODAL DIALOG (KEYBINDINGS CHEAT SHEET)
-   ========================================================================== */
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -1374,9 +1356,7 @@ body {
   box-shadow: 0 2px 0 rgba(0, 0, 0, 0.5);
 }
 
-/* ==========================================================================
    FOOTER
-   ========================================================================== */
 .footer {
   background: var(--bg-glass);
   backdrop-filter: var(--backdrop-blur);
@@ -1468,9 +1448,7 @@ body {
   border: 1px solid var(--border-light);
 }
 
-/* ==========================================================================
    RESPONSIVE LAYOUT BREAKPOINTS
-   ========================================================================== */
 @media (max-width: 992px) {
   .hero-grid {
     grid-template-columns: 1fr;

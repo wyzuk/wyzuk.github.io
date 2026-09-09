@@ -1,6 +1,4 @@
-/* ==========================================================================
    WYZUK PORTFOLIO - HYPRLAND INTERACTIVE ENGINE
-   ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
   initParticleCanvas();
@@ -15,9 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
 });
 
-/* --------------------------------------------------------------------------
    1. PARTICLES & ATMOSPHERIC CANVAS
-   -------------------------------------------------------------------------- */
 function initParticleCanvas() {
   const canvas = document.getElementById('bg-canvas');
   if (!canvas) return;
@@ -71,7 +67,6 @@ function initParticleCanvas() {
   function animate() {
     ctx.clearRect(0, 0, width, height);
 
-    // Draw connecting lines if close
     for (let i = 0; i < particles.length; i++) {
       particles[i].update();
       particles[i].draw();
@@ -97,9 +92,7 @@ function initParticleCanvas() {
   animate();
 }
 
-/* --------------------------------------------------------------------------
    2. HERO TYPING SUBTITLE ANIMATION
-   -------------------------------------------------------------------------- */
 function initTypingAnimation() {
   const typingElement = document.getElementById('typing-text');
   if (!typingElement) return;
@@ -143,9 +136,7 @@ function initTypingAnimation() {
   typeLoop();
 }
 
-/* --------------------------------------------------------------------------
    3. HYPRLAND INTERACTIVE TERMINAL SIMULATOR
-   -------------------------------------------------------------------------- */
 function initTerminalSimulator() {
   const termBody = document.getElementById('terminal-body');
   const termInput = document.getElementById('terminal-input');
@@ -286,9 +277,7 @@ decoration {
   }
 }
 
-/* --------------------------------------------------------------------------
    4. WAYBAR WORKSPACE NAVIGATION & SCROLL TRACKER
-   -------------------------------------------------------------------------- */
 function initWaybarNavigation() {
   const waybar = document.getElementById('waybar');
   const wsBtns = document.querySelectorAll('.ws-btn');
@@ -307,7 +296,6 @@ function initWaybarNavigation() {
       waybar.classList.remove('scrolled');
     }
 
-    // Scroll spy for active workspace
     let currentIdx = 0;
     const scrollPos = window.scrollY + 200;
 
@@ -333,15 +321,12 @@ function initWaybarNavigation() {
   });
 }
 
-/* --------------------------------------------------------------------------
    5. LIVE GITHUB PROFILE API FETCHING WITH DYNAMIC FALLBACK
-   -------------------------------------------------------------------------- */
 function initGitHubProfileFetch() {
   const avatarImg = document.getElementById('github-avatar');
   const repoCountEl = document.getElementById('github-repos-count');
   const followersCountEl = document.getElementById('github-followers-count');
 
-  // Set default fallback values
   if (avatarImg && !avatarImg.src) {
     avatarImg.src = 'https://github.com/wyzuk.png';
   }
@@ -369,9 +354,7 @@ function initGitHubProfileFetch() {
     });
 }
 
-/* --------------------------------------------------------------------------
    6. LIVE SYSTEM UPTIME & MONITOR TICKER
-   -------------------------------------------------------------------------- */
 function initSystemUptimeTicker() {
   const uptimeEl = document.getElementById('uptime-counter');
   const waybarTimeEl = document.getElementById('waybar-time');
@@ -391,12 +374,10 @@ function initSystemUptimeTicker() {
       uptimeEl.textContent = `${days}d ${hours}h ${mins}m ${secs < 10 ? '0' : ''}${secs}s`;
     }
 
-    // Update Waybar live clock
     const now = new Date();
     const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     if (waybarTimeEl) waybarTimeEl.textContent = timeStr;
 
-    // Slight CPU / RAM jitter
     if (waybarCpuEl && Math.random() > 0.6) {
       const cpu = (Math.random() * 3 + 1.2).toFixed(1);
       waybarCpuEl.textContent = `${cpu}%`;
@@ -408,9 +389,7 @@ function initSystemUptimeTicker() {
   }, 1000);
 }
 
-/* --------------------------------------------------------------------------
    7. KEYBINDINGS CHEAT SHEET MODAL
-   -------------------------------------------------------------------------- */
 function initKeybindingsModal() {
   const modal = document.getElementById('keybindings-modal');
   const triggerBtn = document.getElementById('open-kbd-btn');
@@ -439,11 +418,8 @@ function initKeybindingsModal() {
   });
 }
 
-/* --------------------------------------------------------------------------
    8. TABS & SIMULATOR CONTROLS
-   -------------------------------------------------------------------------- */
 function initTabsAndSimulators() {
-  // Dotfiles tabs
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tabContents = document.querySelectorAll('.tab-content-block');
 
@@ -460,7 +436,6 @@ function initTabsAndSimulators() {
     });
   });
 
-  // Discord Bot Command Selector
   const botCmdBtns = document.querySelectorAll('.bot-cmd-pill');
   const botResponseTitle = document.getElementById('bot-response-title');
   const botResponseDesc = document.getElementById('bot-response-desc');
@@ -494,9 +469,7 @@ function initTabsAndSimulators() {
   });
 }
 
-/* --------------------------------------------------------------------------
    9. THEME & SHADER PRESET TOGGLER
-   -------------------------------------------------------------------------- */
 function initShaderAndThemeToggle() {
   const shaderBtn = document.getElementById('shader-btn');
   const themes = ['default', 'cyberpunk', 'twilight', 'emerald'];
@@ -508,7 +481,6 @@ function initShaderAndThemeToggle() {
       const nextTheme = themes[currentIdx];
       document.body.setAttribute('data-theme', nextTheme);
 
-      // Flash feedback
       shaderBtn.style.color = '#38bdf8';
       setTimeout(() => {
         shaderBtn.style.color = '';
@@ -517,9 +489,7 @@ function initShaderAndThemeToggle() {
   }
 }
 
-/* --------------------------------------------------------------------------
    10. INTERSECTION OBSERVER SCROLL REVEAL ANIMATIONS
-   -------------------------------------------------------------------------- */
 function initScrollAnimations() {
   const observerOptions = {
     threshold: 0.15,
